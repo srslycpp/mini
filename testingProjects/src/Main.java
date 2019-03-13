@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -18,20 +17,22 @@ class GoogleInterview{
             while (sc.hasNext()) {
                 String text = sc.next();
                 String replaced = text;
-                for (int i = 0; i <text.length(); i++) {
-                    for (int j = 0; j <chars.length ; j++) {
+                for (int i = 0; i <= text.length(); i++) {
+                    for (int j = i; j <= text.length(); j++) {
+                        for (int k = 0; k < chars.length; k++) {
 
-                        if(text.substring(startIdx,i).equals(chars[j]) || (text.equals(chars[j]))){
-                            replaced =  text.replace(chars[j],charsPop[j]);
-
+                            System.out.println("startIdx: " + startIdx + ",i: " + i + ", j: " + j + ", k: " + k);
+                            if (text.substring(i, j).equals(chars[k])) {
+                                replaced = text.replace(chars[k], charsPop[k]);
+                                System.out.println(text + " = length(): " + text.length() + " => " + replaced);
                             }
+                        }
                     }
 
+                    counter++;
                 }
-                System.out.println(text+ " = lenght(): "+ text.length() +" => "+ replaced);
+                converted.print(replaced + " ");
 
-                converted.print(replaced+" ");
-                counter++;
             }
            converted.close();
            sc.close();
